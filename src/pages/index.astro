@@ -1,0 +1,418 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+<Layout>
+
+<!-- NAV -->
+<nav id="navbar" class="fixed top-0 left-0 right-0 z-40 flex items-center justify-between px-5 md:px-16 h-16 md:h-[72px] bg-cream/95 backdrop-blur-md border-b border-beige transition-shadow duration-300">
+  <a href="#" class="font-serif text-lg md:text-xl tracking-wide text-dark no-underline">Татьяна Редина</a>
+  <ul class="hidden lg:flex gap-8 list-none">
+    {['#services:Услуги','#results:До и после','#price:Прайс','#about:Обо мне','#reviews:Отзывы','#contact:Контакты'].map(item => {
+      const [href, label] = item.split(':');
+      return <li><a href={href} class="text-[11px] tracking-[0.14em] uppercase text-muted hover:text-gold transition-colors">{label}</a></li>;
+    })}
+  </ul>
+  <a href="tel:+79206894420" class="hidden md:block text-sm text-dark tracking-wide">+7 (920) 689-44-20</a>
+  <button id="burger" aria-label="Меню" class="lg:hidden flex flex-col gap-[5px] w-9 h-9 justify-center p-1 bg-transparent border-none cursor-pointer">
+    <span class="block h-[1.5px] bg-dark transition-all duration-300"></span>
+    <span class="block h-[1.5px] bg-dark transition-all duration-300"></span>
+    <span class="block h-[1.5px] bg-dark transition-all duration-300"></span>
+  </button>
+</nav>
+
+<!-- MOBILE MENU -->
+<div id="mobileMenu" class="hidden fixed top-16 left-0 right-0 z-39 bg-cream/98 backdrop-blur-md border-b border-beige flex-col px-8 py-2">
+  {['#services:Услуги','#results:До и после','#price:Прайс','#about:Обо мне','#reviews:Отзывы','#contact:Контакты','tel:+79206894420:+7 (920) 689-44-20'].map(item => {
+    const parts = item.split(':');
+    const href = parts.length === 3 ? `${parts[0]}:${parts[1]}` : parts[0];
+    const label = parts[parts.length - 1];
+    return <a href={href} class="block py-4 border-b border-beige last:border-none text-sm tracking-[0.1em] uppercase text-dark hover:text-gold transition-colors mobile-link">{label}</a>;
+  })}
+</div>
+
+<!-- HERO -->
+<section class="mt-16 md:mt-[72px] grid grid-cols-1 md:grid-cols-2 min-h-[calc(100vh-72px)]" style="padding:0">
+  <div class="flex flex-col justify-center px-5 py-16 md:px-20 order-2 md:order-1">
+    <p class="hero-el text-[11px] tracking-[0.22em] uppercase text-gold mb-6">Студия красоты · пгт Редкино</p>
+    <h1 class="hero-el font-serif text-4xl md:text-5xl xl:text-6xl font-normal leading-[1.15] text-dark mb-7">
+      Красота,<br>которая живёт<br><em class="text-gold not-italic italic">в деталях</em>
+    </h1>
+    <p class="hero-el text-sm md:text-base text-muted max-w-md mb-10 leading-[1.85]">
+      Здесь не будут убеждать вас срочно купить курс процедур или навязывать то, что вам не нужно. Я работаю внимательно, без спешки, с уважением к вашей коже и вашему времени.
+    </p>
+    <a href="tel:+79206894420" class="hero-el self-start inline-block px-10 py-4 bg-dark text-cream text-[11px] tracking-[0.14em] uppercase hover:bg-gold transition-colors">
+      Записаться на консультацию
+    </a>
+  </div>
+  <div class="relative overflow-hidden bg-beige min-h-[60vw] md:min-h-0 order-1 md:order-2">
+    <img src="/photos/lips.jpg" alt="Увеличение губ" class="kenburns w-full h-full object-cover object-top absolute inset-0" />
+    <div class="absolute bottom-8 left-8 bg-cream/95 px-6 py-5 flex items-center gap-4">
+      <div>
+        <div class="font-serif text-3xl text-dark leading-none">20</div>
+        <div class="text-[11px] text-muted tracking-wide mt-1">лет в профессии</div>
+      </div>
+      <div class="w-px h-10 bg-sand"></div>
+      <div>
+        <div class="text-gold text-sm tracking-widest">★★★★★</div>
+        <div class="text-[11px] text-muted mt-1">Яндекс Карты</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ПОДХОД -->
+<section id="approach" class="bg-beige grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-20 items-center px-5 py-16 md:px-20 md:py-28">
+  <div class="reveal-left relative overflow-hidden aspect-[4/5]">
+    <img src="/photos/massage1.jpg" alt="Массаж лица" class="w-full h-[110%] object-cover parallax-img" />
+  </div>
+  <div class="reveal-right">
+    <p class="text-[11px] tracking-[0.22em] uppercase text-gold mb-4">Мой подход</p>
+    <h2 class="font-serif text-3xl md:text-4xl font-normal leading-tight mb-6 text-dark">
+      Каждая процедура<br><em class="italic">подбирается под вас</em>
+    </h2>
+    <p class="text-muted leading-[1.85] mb-4">Здесь нет стандартных решений: я слушаю, наблюдаю и подбираю процедуры так, чтобы результат был именно вашим — гармоничным, естественным, долгим.</p>
+    <p class="text-muted leading-[1.85] mb-10">Моя задача — не изменить вас, а раскрыть то, что в вас уже есть.</p>
+    <div class="flex flex-col gap-5">
+      {[
+        ['Безопасность','Только сертифицированные препараты и проверенные методики'],
+        ['Качество','Каждая процедура начинается с внимательной консультации'],
+        ['Результат','Уверенность в себе и ощущение лёгкости, с которым вы выходите от меня'],
+      ].map(([title, desc]) => (
+        <div class="flex items-start gap-4 pb-5 border-b border-sand last:border-none last:pb-0">
+          <div class="w-9 h-9 shrink-0 flex items-center justify-center border border-gold text-gold text-sm">✦</div>
+          <div>
+            <div class="text-sm font-medium text-dark mb-1">{title}</div>
+            <div class="text-[13px] text-muted leading-relaxed">{desc}</div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<!-- УСЛУГИ -->
+<section id="services" class="bg-cream px-5 py-16 md:px-20 md:py-28">
+  <p class="reveal text-[11px] tracking-[0.22em] uppercase text-gold mb-4">Процедуры</p>
+  <h2 class="reveal font-serif text-3xl md:text-4xl font-normal leading-tight text-dark mb-14">
+    Процедуры,<br><em class="italic">которые вам понравятся</em>
+  </h2>
+  <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-0.5">
+    {[
+      ['01','Увеличение и коррекция губ','Мягкий объём и чёткий контур, которые подчёркивают вашу индивидуальность','от 12 000 ₽'],
+      ['02','Архитектура бровей','Точная работа с формой, которая открывает взгляд и придаёт лицу завершённость','1 000 ₽'],
+      ['03','Скульптурный массаж лица','Возвращает тонус, чёткость овала и ощущение отдохнувшей кожи','1 800 ₽'],
+      ['04','Биоревитализация','Глубокое увлажнение и восстановление кожи, возвращающее сияние и упругость','от 4 500 ₽'],
+    ].map(([num, name, desc, price]) => (
+      <div class="reveal service-card group bg-beige px-8 py-10 flex flex-col transition-colors duration-300 hover:bg-dark cursor-default">
+        <div class="font-serif text-[11px] tracking-[0.2em] text-sand group-hover:text-white/15 mb-8 transition-colors">{num}</div>
+        <div class="font-serif text-xl font-normal leading-snug text-dark group-hover:text-cream mb-4 transition-colors">{name}</div>
+        <p class="text-[13px] text-muted group-hover:text-cream/70 leading-relaxed flex-1 transition-colors">{desc}</p>
+        <div class="h-px bg-sand group-hover:bg-white/10 my-6 transition-colors"></div>
+        <div class="text-sm text-dark group-hover:text-cream transition-colors">{price}</div>
+      </div>
+    ))}
+  </div>
+</section>
+
+<!-- ДО И ПОСЛЕ -->
+<section id="results" class="bg-beige px-5 py-16 md:px-20 md:py-28">
+  <p class="reveal text-[11px] tracking-[0.22em] uppercase text-gold mb-4">Результаты</p>
+  <h2 class="reveal font-serif text-3xl md:text-4xl font-normal text-dark mb-14">До и <em class="italic">после</em></h2>
+
+  <!-- Swiper -->
+  <div class="swiper ba-swiper reveal">
+    <div class="swiper-wrapper">
+      {[
+        ['/photos/ba-chin.jpg','Коррекция овала лица','Липолитики · результат через 3–4 недели'],
+        ['/photos/ba-botox.jpg','Разглаживание лба','Ботокс · результат через 2 недели'],
+        ['/photos/ba-lips.jpg','Увеличение губ','Филлер · естественный объём и контур'],
+      ].map(([src, title, desc]) => (
+        <div class="swiper-slide">
+          <div class="bg-cream overflow-hidden group">
+            <div class="overflow-hidden aspect-square">
+              <img src={src} alt={title} class="w-full h-full object-cover object-top group-hover:scale-[1.03] transition-transform duration-500" />
+            </div>
+            <div class="px-6 py-5">
+              <div class="font-serif text-lg text-dark mb-1">{title}</div>
+              <div class="text-[13px] text-muted">{desc}</div>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+    <div class="swiper-pagination mt-8"></div>
+  </div>
+</section>
+
+<!-- ЦИТАТА -->
+<div class="bg-dark px-5 py-20 md:px-20 md:py-28 text-center">
+  <p class="reveal font-serif text-2xl md:text-3xl xl:text-4xl italic text-cream leading-[1.5] max-w-3xl mx-auto mb-6">
+    «Когда женщина чувствует себя ухоженной и здоровой — меняется её взгляд, её настроение, её день»
+  </p>
+  <p class="reveal text-[12px] tracking-[0.18em] uppercase text-gold">Татьяна Редина</p>
+</div>
+
+<!-- ГАЛЕРЕЯ -->
+<div class="bg-cream">
+  <div class="grid grid-cols-2 md:grid-cols-[2fr_1fr_1fr] gap-0.5"
+       style="grid-template-rows: repeat(2, 280px)">
+    <div class="gallery-item row-span-2 overflow-hidden bg-beige">
+      <img src="/photos/tatyana.jpg" alt="Татьяна Редина" class="w-full h-full object-cover hover:scale-105 transition-transform duration-700" />
+    </div>
+    {['/photos/injection.jpg','/photos/injection2.jpg','/photos/massage1.jpg','/photos/lips.jpg'].map((src, i) => (
+      <div class="gallery-item overflow-hidden bg-beige">
+        <img src={src} alt="Процедура" class="w-full h-full object-cover hover:scale-105 transition-transform duration-700" />
+      </div>
+    ))}
+  </div>
+</div>
+
+<!-- ОБО МНЕ -->
+<section id="about" class="bg-beige grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-24 items-center px-5 py-16 md:px-20 md:py-28">
+  <div class="reveal-left relative max-w-sm mx-auto md:max-w-none">
+    <img src="/photos/tatyana2.jpg" alt="Татьяна Редина, косметолог" class="w-full h-auto object-contain block" />
+    <div class="absolute bottom-0 right-0 bg-cream px-6 py-5 text-center">
+      <div class="font-serif text-5xl text-gold leading-none">20</div>
+      <div class="text-[11px] text-muted tracking-wide mt-1">лет в профессии</div>
+    </div>
+  </div>
+  <div class="reveal-right">
+    <p class="text-[11px] tracking-[0.22em] uppercase text-gold mb-4">Обо мне</p>
+    <h2 class="font-serif text-3xl md:text-4xl font-normal leading-tight text-dark mb-8">
+      <em class="italic">Татьяна</em><br>Редина
+    </h2>
+    <p class="text-muted leading-[1.85] mb-5">Я в бьюти-индустрии с 2006 года — и за это время моим главным ориентиром остаётся одно: результат, которому можно доверять.</p>
+    <p class="text-muted leading-[1.85] mb-5">В своей работе я использую только сертифицированные препараты и проверенные методики с доказанной эффективностью. Каждая процедура начинается с внимательной консультации: я никогда не предложу то, что вам не нужно.</p>
+    <p class="text-muted leading-[1.85] mb-5">За годы практики я заметила: когда женщина чувствует себя ухоженной и здоровой — меняется её взгляд, её настроение, её день. Именно это тепло и уверенность я стараюсь подарить каждой, кто приходит ко мне.</p>
+    <div class="font-serif text-2xl italic text-dark mt-8">Татьяна Редина</div>
+  </div>
+</section>
+
+<!-- ОТЗЫВЫ -->
+<section id="reviews" class="bg-cream px-5 py-16 md:px-20 md:py-28">
+  <p class="reveal text-[11px] tracking-[0.22em] uppercase text-gold mb-4">Отзывы</p>
+  <h2 class="reveal font-serif text-3xl md:text-4xl font-normal text-dark mb-14">Что говорят гостьи</h2>
+
+  <div class="swiper reviews-swiper reveal">
+    <div class="swiper-wrapper">
+      {[
+        ['Анна, 34 года','Очень довольна результатом. Татьяна внимательно выслушала и предложила именно то, что мне подходит. Буду возвращаться.'],
+        ['Марина, 42 года','Профессионал своего дела. Результат после скульптурного массажа виден сразу — лицо выглядит отдохнувшим и подтянутым.'],
+        ['Елена, 29 лет','Наконец нашла мастера, которому можно доверять. Работает аккуратно, всё объясняет. Брови получились идеальные.'],
+        ['Рита Калашникова · Яндекс Карты','Хочу выразить благодарность Татьяне за уход моего личика. На протяжении многих лет хожу к Татьяне и всегда довольна результатом. В студии царит доброжелательная атмосфера, большой выбор процедур и индивидуальный подход. Обожаю массаж лица, расслабление на 100%. Обязательно рекомендую!'],
+        ['Юлия · Яндекс Карты','Мой сын был у Татьяны на проф. чистке лица. Чистота кабинета, благоприятная атмосфера, Татьяна внимательная и доброжелательная. Процедура выполнена качественно, результатом остался очень доволен. В конце были даны рекомендации и пробники косметики. Рекомендуем!'],
+        ['Татьяна Гусева · Яндекс Карты','Если вы хотите отрешиться от рутины и получить удовольствие от процедур красоты — вам сюда, к Татьяне! И массаж, и маски, и коррекция, и оформление бровей — всё своими волшебными руками. После посещения хочется летать!'],
+      ].map(([author, text]) => (
+        <div class="swiper-slide h-auto">
+          <div class="bg-beige px-8 py-9 h-full flex flex-col">
+            <div class="text-gold tracking-widest text-sm mb-5">★★★★★</div>
+            <p class="text-muted text-sm leading-[1.8] flex-1 mb-6">«{text}»</p>
+            <div class="text-[13px] font-medium text-dark">{author}</div>
+          </div>
+        </div>
+      ))}
+    </div>
+    <div class="swiper-pagination mt-8"></div>
+  </div>
+</section>
+
+<!-- ПРАЙС -->
+<section id="price" class="bg-cream px-5 py-16 md:px-20 md:py-28">
+  <p class="reveal text-[11px] tracking-[0.22em] uppercase text-gold mb-4">Прайс-лист</p>
+
+  <div class="reveal border border-sand">
+    <button id="accordionBtn" class="w-full flex items-center justify-between px-6 md:px-10 py-7 bg-beige hover:bg-sand transition-colors cursor-pointer text-left">
+      <span class="font-serif text-2xl md:text-3xl font-normal text-dark">Услуги <em class="italic">и стоимость</em></span>
+      <span id="accordionIcon" class="w-10 h-10 shrink-0 flex items-center justify-center border border-gold text-gold text-xl transition-transform duration-300">+</span>
+    </button>
+
+    <div id="accordionBody" class="accordion-body open">
+      <p class="inline-flex items-center gap-2 text-[12px] text-gold border border-dashed border-gold px-4 py-2.5 mb-10">
+        ✦ Нажмите на цену чтобы отредактировать
+      </p>
+
+      <div class="flex flex-col gap-11">
+        {[
+          ['Увеличение губ',      [['Увеличение губ','12 000 ₽']]],
+          ['Чистка лица',         [['Чистка лица','2 500 ₽']]],
+          ['Филлеры',             [['Full Face: Filler','10 000 ₽']]],
+          ['Ботокс',              [['Full Face: Botox','300 ₽ / ед.']]],
+          ['Липолитики',          [['Липолитики','7 000 ₽']]],
+          ['Биоревитализация',    [['Глубокая биоревитализация и лифтинг (БАТ)','6 500 ₽'],['Биоревитализация','4 500 ₽']]],
+          ['Биоармирование',      [['Биоармирование','10 000 ₽']]],
+          ['Мезотерапия',         [['Мезотерапия','4 500 ₽'],['Фракционная мезотерапия','3 500 ₽']]],
+          ['Пилинг лица',         [['Химический пилинг','1 500 ₽']]],
+          ['Массаж лица',         [['Классический массаж (по Ахабадзе)','1 400 ₽'],['Миофасциальный массаж','2 500 ₽'],['Лимфодренажный массаж','800 ₽'],['Скульптурный массаж','1 800 ₽']]],
+          ['Архитектура бровей',  [['Архитектура бровей','1 000 ₽']]],
+        ].map(([cat, rows]) => (
+          <div>
+            <div class="font-serif text-lg text-dark pb-4 border-b border-sand mb-1">{cat as string}</div>
+            {(rows as [string,string][]).map(([name, price]) => (
+              <div class="flex items-baseline gap-3 py-3.5 border-b border-beige last:border-none flex-wrap md:flex-nowrap">
+                <span class="text-sm text-dark flex-1">{name}</span>
+                <span class="hidden md:block flex-1 border-b border-dotted border-sand mx-3 mb-1"></span>
+                <span class="text-sm text-dark font-normal whitespace-nowrap md:text-base" contenteditable="true" style="outline:none;cursor:text" onFocus="this.style.background='rgba(184,154,122,.08)'" onBlur="this.style.background=''">{price}</span>
+              </div>
+            ))}
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- КОНТАКТЫ -->
+<section id="contact" class="grid grid-cols-1 md:grid-cols-2 bg-dark" style="padding:0">
+  <div class="px-5 py-16 md:px-20 md:py-28 flex flex-col justify-center">
+    <p class="reveal text-[11px] tracking-[0.22em] uppercase text-gold mb-4">Запись</p>
+    <h2 class="reveal font-serif text-3xl md:text-4xl font-normal text-cream mb-6 leading-tight">
+      Записаться<br><em class="italic text-gold">на процедуру</em>
+    </h2>
+    <p class="reveal text-sm text-white/50 mb-10 leading-[1.8]">Напишите или позвоните — я отвечу и подберу удобное для вас время.</p>
+    <div class="reveal flex flex-col gap-5 mb-10">
+      <a href="tel:+79206894420" class="text-white/75 text-base hover:text-gold transition-colors">+7 (920) 689-44-20</a>
+      <div class="flex gap-4">
+        <span class="text-[11px] tracking-[0.18em] uppercase text-gold min-w-[80px] pt-0.5">Адрес</span>
+        <span class="text-sm text-white/75 leading-relaxed">пгт Редкино, ул. Гагарина, 2<br>этаж 1, офис 3</span>
+      </div>
+      <div class="flex gap-4">
+        <span class="text-[11px] tracking-[0.18em] uppercase text-gold min-w-[80px] pt-0.5">Режим</span>
+        <span class="text-sm text-white/75 leading-relaxed">По предварительной записи<br>до 22:00</span>
+      </div>
+    </div>
+    <div class="reveal flex gap-4 flex-wrap">
+      <a href="tel:+79206894420" class="inline-block px-9 py-4 bg-dark text-cream text-[11px] tracking-widest uppercase border border-white/20 hover:bg-gold hover:border-gold transition-colors">Позвонить</a>
+      <a href="https://t.me/TatianaRedina" target="_blank" rel="noopener noreferrer" class="inline-block px-9 py-4 text-white/60 text-[11px] tracking-widest uppercase border border-white/20 hover:border-gold hover:text-gold transition-colors">Telegram</a>
+    </div>
+  </div>
+  <div class="min-h-[350px] md:min-h-0 bg-sand overflow-hidden">
+    <iframe
+      src="https://yandex.ru/map-widget/v1/?ll=36.353332%2C56.663062&z=15&pt=36.353332,56.663062,pm2rdm"
+      class="w-full h-full border-none block"
+      allowfullscreen
+      loading="lazy"
+      referrerpolicy="no-referrer-when-downgrade">
+    </iframe>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="bg-[#1A1210] px-5 py-8 md:px-20 flex flex-col md:flex-row items-center justify-between gap-4 flex-wrap">
+  <div class="font-serif text-lg text-white/50">Татьяна Редина</div>
+  <p class="text-[13px] text-white/30 text-center">© 2026 Студия красоты Татьяны Рединой · пгт Редкино, Тверская область</p>
+  <div class="flex items-center gap-3 text-xs text-white/30">
+    <a href="/privacy" class="hover:text-gold transition-colors">Конфиденциальность</a>
+    <span>·</span>
+    <a href="/terms" class="hover:text-gold transition-colors">Соглашение</a>
+  </div>
+</footer>
+
+</Layout>
+
+<script>
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import Swiper from 'swiper';
+import { Navigation, Pagination, Autoplay } from 'swiper/modules';
+import 'swiper/css';
+import 'swiper/css/pagination';
+
+gsap.registerPlugin(ScrollTrigger);
+
+// Hero animations
+gsap.from('.hero-el', {
+  opacity: 0, y: 30, duration: 0.9, stagger: 0.15, ease: 'power2.out', delay: 0.2
+});
+
+// Scroll reveal
+gsap.utils.toArray<Element>('.reveal').forEach(el => {
+  gsap.from(el, {
+    opacity: 0, y: 40, duration: 0.8, ease: 'power2.out',
+    scrollTrigger: { trigger: el, start: 'top 88%', once: true }
+  });
+});
+gsap.utils.toArray<Element>('.reveal-left').forEach(el => {
+  gsap.from(el, {
+    opacity: 0, x: -50, duration: 0.9, ease: 'power2.out',
+    scrollTrigger: { trigger: el, start: 'top 85%', once: true }
+  });
+});
+gsap.utils.toArray<Element>('.reveal-right').forEach(el => {
+  gsap.from(el, {
+    opacity: 0, x: 50, duration: 0.9, ease: 'power2.out',
+    scrollTrigger: { trigger: el, start: 'top 85%', once: true }
+  });
+});
+
+// Parallax
+gsap.utils.toArray<Element>('.parallax-img').forEach(img => {
+  gsap.to(img, {
+    yPercent: -10,
+    ease: 'none',
+    scrollTrigger: { trigger: img, scrub: true }
+  });
+});
+
+// Navbar shadow on scroll
+window.addEventListener('scroll', () => {
+  document.getElementById('navbar')!.style.boxShadow =
+    window.scrollY > 20 ? '0 2px 20px rgba(44,36,32,0.08)' : 'none';
+}, { passive: true });
+
+// Burger menu
+const burger = document.getElementById('burger')!;
+const menu   = document.getElementById('mobileMenu')!;
+const spans  = burger.querySelectorAll('span');
+let open = false;
+burger.addEventListener('click', () => {
+  open = !open;
+  menu.style.display = open ? 'flex' : 'none';
+  spans[0].style.transform = open ? 'translateY(6.5px) rotate(45deg)' : '';
+  spans[1].style.opacity   = open ? '0' : '1';
+  spans[2].style.transform = open ? 'translateY(-6.5px) rotate(-45deg)' : '';
+});
+document.querySelectorAll('.mobile-link').forEach(l =>
+  l.addEventListener('click', () => {
+    open = false;
+    menu.style.display = 'none';
+    spans.forEach((s: HTMLElement) => { s.style.transform = ''; s.style.opacity = '1'; });
+  })
+);
+
+// Accordion
+const btn  = document.getElementById('accordionBtn')!;
+const body = document.getElementById('accordionBody')!;
+const icon = document.getElementById('accordionIcon')!;
+btn.addEventListener('click', () => {
+  body.classList.toggle('open');
+  icon.style.transform = body.classList.contains('open') ? 'rotate(45deg)' : '';
+});
+
+// Before/After Swiper
+new Swiper('.ba-swiper', {
+  modules: [Pagination, Autoplay],
+  slidesPerView: 1,
+  spaceBetween: 20,
+  loop: true,
+  autoplay: { delay: 4000, disableOnInteraction: false },
+  pagination: { el: '.ba-swiper .swiper-pagination', clickable: true },
+  breakpoints: {
+    640:  { slidesPerView: 2 },
+    1024: { slidesPerView: 3 },
+  }
+});
+
+// Reviews Swiper
+new Swiper('.reviews-swiper', {
+  modules: [Pagination, Autoplay],
+  slidesPerView: 1,
+  spaceBetween: 24,
+  loop: true,
+  autoplay: { delay: 5000, disableOnInteraction: false },
+  pagination: { el: '.reviews-swiper .swiper-pagination', clickable: true },
+  breakpoints: {
+    640:  { slidesPerView: 2 },
+    1024: { slidesPerView: 3 },
+  }
+});
+</script>

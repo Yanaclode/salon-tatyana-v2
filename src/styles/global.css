@@ -1,0 +1,50 @@
+@import "tailwindcss";
+@import "@fontsource/playfair-display/400.css";
+@import "@fontsource/playfair-display/500.css";
+@import "@fontsource/playfair-display/700.css";
+@import "@fontsource/playfair-display/400-italic.css";
+@import "@fontsource/playfair-display/500-italic.css";
+
+@theme {
+  --color-cream:  #FAF7F4;
+  --color-beige:  #EFE8DF;
+  --color-sand:   #D9CCBE;
+  --color-gold:   #B89A7A;
+  --color-dark:   #2C2420;
+  --color-muted:  #7A6C63;
+  --font-serif: "Playfair Display", Georgia, serif;
+}
+
+html { scroll-behavior: smooth; }
+body { overflow-x: hidden; }
+
+.font-serif { font-family: "Playfair Display", Georgia, serif; }
+
+/* Swiper overrides */
+.swiper-pagination-bullet       { background: var(--color-sand) !important; opacity: 1 !important; }
+.swiper-pagination-bullet-active{ background: var(--color-gold) !important; }
+.swiper-button-next,
+.swiper-button-prev             { color: var(--color-gold) !important; }
+
+/* Cookie banner */
+.cookie-banner { transform: translateY(0); transition: transform .4s ease; }
+.cookie-banner.hidden { transform: translateY(110%); }
+
+/* Ken Burns */
+@keyframes kenburns {
+  0%   { transform: scale(1)    translate(0,0); }
+  50%  { transform: scale(1.06) translate(-1%,-1%); }
+  100% { transform: scale(1.04) translate(1%,0.5%); }
+}
+.kenburns { animation: kenburns 18s ease-in-out infinite alternate; }
+
+/* Accordion */
+.accordion-body {
+  max-height: 0; overflow: hidden;
+  transition: max-height .5s ease, padding .3s ease;
+  padding: 0 2.5rem;
+}
+.accordion-body.open {
+  max-height: 9999px;
+  padding: 2.5rem;
+}
